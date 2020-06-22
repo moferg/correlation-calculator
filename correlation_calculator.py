@@ -1,5 +1,6 @@
 # Imports
 
+import math
 import statistics
 
 # Function Definitions
@@ -7,6 +8,21 @@ import statistics
 def mean_of_list(list_values):
 	return sum(list_values) / len(list_values)
 
+def standard_deviation(list_values):
+	deviation_scores = []
+	deviation_scores_squared = []
+	sum_of_squares = 0
+	variance = 0
+	std_deviation = 0
+	for x in list_values:
+		deviation_scores.append(x - mean_of_list(list_values))
+	for x in deviation_scores:
+		deviation_scores_squared.append(x ** 2)
+	sum_of_squares = math.fsum(deviation_scores_squared)
+	# sum_of_squares += (math.fsum(list_values[x] - mean_of_list(list_values))) ** 2
+	variance = sum_of_squares / len(list_values)
+	std_deviation = math.sqrt(variance)
+	return std_deviation
 
 # Initial Variable Declarations 
 
@@ -28,8 +44,9 @@ while True:
 		print("The sum of the first list is", sum(correlation_values_a))
 		break
 
-print("The mean(average) of the first list is", mean_of_list(correlation_values_a))
-print("The Standard Deviation of the first list is", statistics.stdev(correlation_values_a))
+print("The mean (average) of the first list is", mean_of_list(correlation_values_a))
+print("The Standard Deviation of the first list is", standard_deviation(correlation_values_a))
+print("The Standard Deviation of the first list (using .pstdev) is", statistics.pstdev(correlation_values_a))
 
 while True:
 	print("Type 'DONE' when you have entered all values")
@@ -44,8 +61,9 @@ while True:
 		print("The sum of the second list is", sum(correlation_values_b))
 		break
 
-print("The mean(average) of the second list is", mean_of_list(correlation_values_b))
-print("The Standard Deviation of the second list is", statistics.stdev(correlation_values_b))
+print("The mean (average) of the second list is", mean_of_list(correlation_values_b))
+print("The Standard Deviation of the second list is", standard_deviation(correlation_values_b))
+print("The Standard Deviation of the second list (using .pstdev) is", statistics.pstdev(correlation_values_b))
 
 # Mean Formula
 # M = sum of X / N
