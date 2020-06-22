@@ -1,13 +1,19 @@
-#Imports
+# Imports
 
 import statistics
 
-#Initial Variable Declarations 
+# Function Definitions
+
+def mean_of_list(list_values):
+	return sum(list_values) / len(list_values)
+
+
+# Initial Variable Declarations 
 
 correlation_values_a = []
 correlation_values_b = []
 
-#Ask the user to input values for correlation for each list
+# Ask the user to input values for correlation for each list
 
 while True:
 	print("Type 'DONE' when you have entered all values")
@@ -22,7 +28,7 @@ while True:
 		print("The sum of the first list is", sum(correlation_values_a))
 		break
 
-print("The mean(average) of the first list is", statistics.mean(correlation_values_a))
+print("The mean(average) of the first list is", mean_of_list(correlation_values_a))
 print("The Standard Deviation of the first list is", statistics.stdev(correlation_values_a))
 
 while True:
@@ -38,7 +44,7 @@ while True:
 		print("The sum of the second list is", sum(correlation_values_b))
 		break
 
-print("The mean(average) of the second list is", statistics.mean(correlation_values_b))
+print("The mean(average) of the second list is", mean_of_list(correlation_values_b))
 print("The Standard Deviation of the second list is", statistics.stdev(correlation_values_b))
 
 # Mean Formula
