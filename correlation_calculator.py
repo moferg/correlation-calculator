@@ -24,6 +24,13 @@ def standard_deviation(list_values):
 	std_deviation = math.sqrt(variance)
 	return std_deviation
 
+def z_scores_of_list(list_values):
+	z_scores = []
+	for x in list_values:
+		z_score = (x - mean_of_list(list_values)) / standard_deviation(list_values)
+		z_scores.append(z_score)
+	return z_scores
+
 # Initial Variable Declarations 
 
 correlation_values_a = []
@@ -47,6 +54,7 @@ while True:
 print("The mean (average) of the first list is", mean_of_list(correlation_values_a))
 print("The Standard Deviation of the first list is", standard_deviation(correlation_values_a))
 print("The Standard Deviation of the first list (using .pstdev) is", statistics.pstdev(correlation_values_a))
+print("The Z-Scores of the first list are", z_scores_of_list(correlation_values_a))
 
 while True:
 	print("Type 'DONE' when you have entered all values")
@@ -64,6 +72,7 @@ while True:
 print("The mean (average) of the second list is", mean_of_list(correlation_values_b))
 print("The Standard Deviation of the second list is", standard_deviation(correlation_values_b))
 print("The Standard Deviation of the second list (using .pstdev) is", statistics.pstdev(correlation_values_b))
+print("The Z-Scores of the second list are", z_scores_of_list(correlation_values_b))
 
 # Mean Formula
 # M = sum of X / N
