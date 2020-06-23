@@ -31,6 +31,27 @@ def z_scores_of_list(list_values):
 		z_scores.append(z_score)
 	return z_scores
 
+def correlation_of_two_lists(list_values_a, list_values_b):
+	multiplied_z_scores = []
+	z_scores_a = z_scores_of_list(list_values_a)
+	z_scores_b = z_scores_of_list(list_values_b)
+	# Below code does not work as intended, outputs a list with 26 indexes instead of 5 indexes
+	# Nested for loops != solution
+	# for x in z_scores_a:
+	# 	for y in z_scores_b:
+	# 		multiplied_z_score = x * y
+	# 		multiplied_z_scores.append(multiplied_z_score)
+	# sum_of_multiplied_z_scores = math.fsum(multiplied_z_scores)
+	# Leaving the baove code as a reminder that simple is better than complex
+	for x, y in zip(z_scores_a, z_scores_b):
+		multiplied_z_scores.append(x * y)
+	sum_of_multiplied_z_scores = math.fsum(multiplied_z_scores)
+	print(multiplied_z_scores)
+	print(sum_of_multiplied_z_scores)
+	# sum_of_multiplied_z_scores = sum((x - mean_of_list(list_values_a)) / standard_deviation(list_values_a) * (y - mean_of_list(list_values_b)) / standard_deviation(list_values_b))
+	r = sum_of_multiplied_z_scores / len(list_values_a)
+	return r
+
 # Initial Variable Declarations 
 
 correlation_values_a = []
@@ -73,6 +94,8 @@ print("The mean (average) of the second list is", mean_of_list(correlation_value
 print("The Standard Deviation of the second list is", standard_deviation(correlation_values_b))
 print("The Standard Deviation of the second list (using .pstdev) is", statistics.pstdev(correlation_values_b))
 print("The Z-Scores of the second list are", z_scores_of_list(correlation_values_b))
+
+print("The Correlation between the two lists is", correlation_of_two_lists(correlation_values_a, correlation_values_b))
 
 # Mean Formula
 # M = sum of X / N
